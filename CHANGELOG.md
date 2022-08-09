@@ -2,8 +2,22 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 0.0.2
+
+([Full Changelog](https://github.com/team-monolith-product/jupyterlab-google-analytics/compare/v0.0.1...ae269b3aa25b5dd6db9cb6622ac876b4e78a695b))
+
+### Merged PRs
+
+- feat: Change tracking_it to trackingId [#2](https://github.com/team-monolith-product/jupyterlab-google-analytics/pull/2) ([@a3626a](https://github.com/a3626a))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/team-monolith-product/jupyterlab-google-analytics/graphs/contributors?from=2022-08-09&to=2022-08-09&type=c))
+
+[@a3626a](https://github.com/search?q=repo%3Ateam-monolith-product%2Fjupyterlab-google-analytics+involves%3Aa3626a+updated%3A2022-08-09..2022-08-09&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 0.0.1
 
 No merged PRs
-
-<!-- <END NEW CHANGELOG ENTRY> -->

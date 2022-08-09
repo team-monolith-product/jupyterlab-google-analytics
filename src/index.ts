@@ -26,12 +26,12 @@ const plugin: JupyterFrontEndPlugin<void> = {
     // Activate the Global Site Tag
     const windowAnalytics = window as any;
     windowAnalytics.dataLayer = windowAnalytics.dataLayer || [];
-    function gtag(a: any, b: any) {
-      windowAnalytics.dataLayer.push([a, b]);
-    }
+    windowAnalytics.gtag = function () {
+      windowAnalytics.dataLayer.push(arguments);
+    };
 
-    gtag("js", new Date());
-    gtag("config", trackingId);
+    windowAnalytics.gtag("js", new Date());
+    windowAnalytics.gtag("config", trackingId);
   },
 };
 

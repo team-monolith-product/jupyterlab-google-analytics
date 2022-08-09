@@ -2,6 +2,22 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 0.0.3
+
+([Full Changelog](https://github.com/team-monolith-product/jupyterlab-google-analytics/compare/v0.0.2...aa6e12319df55a10bd484d4bcb702dd54e24dc77))
+
+### Merged PRs
+
+- Feature/fix missing composite [#4](https://github.com/team-monolith-product/jupyterlab-google-analytics/pull/4) ([@a3626a](https://github.com/a3626a))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/team-monolith-product/jupyterlab-google-analytics/graphs/contributors?from=2022-08-09&to=2022-08-09&type=c))
+
+[@a3626a](https://github.com/search?q=repo%3Ateam-monolith-product%2Fjupyterlab-google-analytics+involves%3Aa3626a+updated%3A2022-08-09..2022-08-09&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 0.0.2
 
 ([Full Changelog](https://github.com/team-monolith-product/jupyterlab-google-analytics/compare/v0.0.1...ae269b3aa25b5dd6db9cb6622ac876b4e78a695b))
@@ -15,8 +31,6 @@
 ([GitHub contributors page for this release](https://github.com/team-monolith-product/jupyterlab-google-analytics/graphs/contributors?from=2022-08-09&to=2022-08-09&type=c))
 
 [@a3626a](https://github.com/search?q=repo%3Ateam-monolith-product%2Fjupyterlab-google-analytics+involves%3Aa3626a+updated%3A2022-08-09..2022-08-09&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 0.0.1
 

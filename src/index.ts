@@ -14,7 +14,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   requires: [ISettingRegistry],
   activate: async (app: JupyterFrontEnd, settingRegistry: ISettingRegistry) => {
     const setting = await settingRegistry.load(plugin.id);
-    const trackingId = setting.get("trackingId");
+    const trackingId = setting.get("trackingId").composite as string;
 
     var ga_url = "https://www.googletagmanager.com/gtag/js?id=" + trackingId;
     const a = document.createElement("script");

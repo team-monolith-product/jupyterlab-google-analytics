@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-google-analytics",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A JupyterLab extension.",
   "keywords": [
     "jupyter",
@@ -89,7 +89,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "jupyterlab": { 
+  "jupyterlab": {
     "extension": true,
     "outputDir": "jupyterlab_google_analytics/labextension",
     "schemaDir": "schema"

@@ -1,31 +1,38 @@
 import {
   JupyterFrontEnd,
-  JupyterFrontEndPlugin
-} from '@jupyterlab/application';
+  JupyterFrontEndPlugin,
+} from "@jupyterlab/application";
 
-import { ISettingRegistry } from '@jupyterlab/settingregistry';
+import { ISettingRegistry } from "@jupyterlab/settingregistry";
 
 /**
  * Initialization data for the jupyterlab-google-analytics extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'jupyterlab-google-analytics:plugin',
+  id: "jupyterlab-google-analytics:plugin",
   autoStart: true,
-  optional: [ISettingRegistry],
-  activate: (app: JupyterFrontEnd, settingRegistry: ISettingRegistry | null) => {
-    console.log('JupyterLab extension jupyterlab-google-analytics is activated!');
+  requires: [ISettingRegistry],
+  activate: async (app: JupyterFrontEnd, settingRegistry: ISettingRegistry) => {
+    const setting = await settingRegistry.load(plugin.id);
+    const trackingId = setting.get("tracking_id");
 
-    if (settingRegistry) {
-      settingRegistry
-        .load(plugin.id)
-        .then(settings => {
-          console.log('jupyterlab-google-analytics settings loaded:', settings.composite);
-        })
-        .catch(reason => {
-          console.error('Failed to load settings for jupyterlab-google-analytics.', reason);
-        });
+    var ga_url = "https://www.googletagmanager.com/gtag/js?id=" + trackingId;
+    const a = document.createElement("script");
+    const m = document.getElementsByTagName("script")[0];
+    a.async = true;
+    a.src = ga_url;
+    m.parentNode?.insertBefore(a, m);
+
+    // Activate the Global Site Tag
+    const windowAnalytics = window as any;
+    windowAnalytics.dataLayer = windowAnalytics.dataLayer || [];
+    function gtag(a: any, b: any) {
+      windowAnalytics.dataLayer.push([a, b]);
     }
-  }
+
+    gtag("js", new Date());
+    gtag("config", trackingId);
+  },
 };
 
 export default plugin;

@@ -9,6 +9,7 @@ import { Token } from '@lumino/coreutils';
 export const IGa = new Token<IGa>('jupyterlab-google-analytics:plugin:IGa');
 export interface IGa {
   gtag: (...args: any[]) => void;
+  config: (options: any) => void;
 }
 
 /**
@@ -44,7 +45,9 @@ const plugin: JupyterFrontEndPlugin<IGa> = {
     windowAnalytics.gtag('config', trackingId);
 
     return {
-      gtag: windowAnalytics.gtag
+      gtag: windowAnalytics.gtag,
+      config: (options: any) =>
+        windowAnalytics.gtag('config', trackingId, options)
     };
   }
 };

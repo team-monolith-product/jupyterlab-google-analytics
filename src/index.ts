@@ -1,24 +1,34 @@
 import {
   JupyterFrontEnd,
-  JupyterFrontEndPlugin,
-} from "@jupyterlab/application";
+  JupyterFrontEndPlugin
+} from '@jupyterlab/application';
 
-import { ISettingRegistry } from "@jupyterlab/settingregistry";
+import { ISettingRegistry } from '@jupyterlab/settingregistry';
+import { Token } from '@lumino/coreutils';
+
+export const IGa = new Token<IGa>('jupyterlab-google-analytics:plugin:IGa');
+export interface IGa {
+  gtag: (...args: any[]) => void;
+}
 
 /**
  * Initialization data for the jupyterlab-google-analytics extension.
  */
-const plugin: JupyterFrontEndPlugin<void> = {
-  id: "jupyterlab-google-analytics:plugin",
+const plugin: JupyterFrontEndPlugin<IGa> = {
+  id: 'jupyterlab-google-analytics:plugin',
   autoStart: true,
+  provides: IGa,
   requires: [ISettingRegistry],
-  activate: async (app: JupyterFrontEnd, settingRegistry: ISettingRegistry) => {
+  activate: async (
+    app: JupyterFrontEnd,
+    settingRegistry: ISettingRegistry
+  ): Promise<IGa> => {
     const setting = await settingRegistry.load(plugin.id);
-    const trackingId = setting.get("trackingId").composite as string;
+    const trackingId = setting.get('trackingId').composite as string;
 
-    var ga_url = "https://www.googletagmanager.com/gtag/js?id=" + trackingId;
-    const a = document.createElement("script");
-    const m = document.getElementsByTagName("script")[0];
+    var ga_url = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId;
+    const a = document.createElement('script');
+    const m = document.getElementsByTagName('script')[0];
     a.async = true;
     a.src = ga_url;
     m.parentNode?.insertBefore(a, m);
@@ -30,9 +40,13 @@ const plugin: JupyterFrontEndPlugin<void> = {
       windowAnalytics.dataLayer.push(arguments);
     };
 
-    windowAnalytics.gtag("js", new Date());
-    windowAnalytics.gtag("config", trackingId);
-  },
+    windowAnalytics.gtag('js', new Date());
+    windowAnalytics.gtag('config', trackingId);
+
+    return {
+      gtag: windowAnalytics.gtag
+    };
+  }
 };
 
 export default plugin;

@@ -1,11 +1,24 @@
 # jupyterlab_google_analytics
 
-[![Github Actions Status](https://github.com/team-monolith-product/jupyterlab-google-analytics/workflows/Build/badge.svg)](https://github.com/team-monolith-product/jupyterlab-google-analytics/actions/workflows/build.yml)
-A JupyterLab extension.
+It provides IGA interface. GA tracking ID should be set in the setting file.
+```
+interface IGa {
+  gtag: (...args: any[]) => void;
+  config: (options: any) => void;
+}
+```
 
 ## Requirements
 
+### 0.\*.\*
+
 - JupyterLab >= 3.0
+
+### 1.\*.\*
+
+- JupyterLab >= 4.0
+
+1.* versions are developed and tested with JupyterLab 4.0.0a29.
 
 ## Install
 
@@ -24,6 +37,13 @@ pip uninstall jupyterlab_google_analytics
 ```
 
 ## Contributing
+
+### Creating Conda Environment
+
+For `0.*.*` versions,
+```
+conda create -n jupyterlab-ext --override-channels --strict-channel-priority -c conda-forge -c nodefaults jupyterlab=3 cookiecutter nodejs jupyter-packaging git
+```
 
 ### Development install
 

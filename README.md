@@ -1,6 +1,7 @@
 # jupyterlab_google_analytics
 
 It provides IGA interface. GA tracking ID should be set in the setting file.
+
 ```
 interface IGa {
   gtag: (...args: any[]) => void;
@@ -17,8 +18,6 @@ interface IGa {
 ### 1.\*.\*
 
 - JupyterLab >= 4.0
-
-1.* versions are developed and tested with JupyterLab 4.0.0a29.
 
 ## Install
 
@@ -41,6 +40,7 @@ pip uninstall jupyterlab_google_analytics
 ### Creating Conda Environment
 
 For `0.*.*` versions,
+
 ```
 conda create -n jupyterlab-ext --override-channels --strict-channel-priority -c conda-forge -c nodefaults jupyterlab=3 cookiecutter nodejs jupyter-packaging git
 ```
@@ -57,7 +57,7 @@ The `jlpm` command is JupyterLab's pinned version of
 # Clone the repo to your local environment
 # Change directory to the jupyterlab_google_analytics directory
 # Install package in development mode
-pip install -e .
+pip install -e "."
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Rebuild extension Typescript source after making changes
@@ -106,7 +106,7 @@ jlpm test
 
 #### Integration tests
 
-This extension uses [Playwright](https://playwright.dev/docs/intro/) for the integration tests (aka user level tests).
+This extension uses [Playwright](https://playwright.dev/docs/intro) for the integration tests (aka user level tests).
 More precisely, the JupyterLab helper [Galata](https://github.com/jupyterlab/jupyterlab/tree/master/galata) is used to handle testing the extension in JupyterLab.
 
 More information are provided within the [ui-tests](./ui-tests/README.md) README.

@@ -27,7 +27,7 @@ const plugin: JupyterFrontEndPlugin<IGa> = {
     const setting = await settingRegistry.load(plugin.id);
     const trackingId = setting.get('trackingId').composite as string;
 
-    var ga_url = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId;
+    const ga_url = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId;
     const a = document.createElement('script');
     const m = document.getElementsByTagName('script')[0];
     a.async = true;
@@ -37,8 +37,8 @@ const plugin: JupyterFrontEndPlugin<IGa> = {
     // Activate the Global Site Tag
     const windowAnalytics = window as any;
     windowAnalytics.dataLayer = windowAnalytics.dataLayer || [];
-    windowAnalytics.gtag = function () {
-      windowAnalytics.dataLayer.push(arguments);
+    windowAnalytics.gtag = (...args: any[]) => {
+      windowAnalytics.dataLayer.push(args);
     };
 
     windowAnalytics.gtag('js', new Date());
